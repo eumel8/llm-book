@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zeilenleser</title>
   <style>
-    :root { --active-bg: #fff3b0; --border: #e5e7eb; }
-    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
-    .header { position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--border); padding: .5rem .75rem; display: flex; gap: .75rem; align-items: center; }
+    :root {
+      --active-bg: #dbeafe; /* sanftes Blau */
+      --border: #cbd5e1;    /* helles Grau */
+    }
+    /* :root { --active-bg: #fff3b0; --border: #e5e7eb; } */
+    body {  background: #f9fafb; margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    .header {   background: #1e293b; color: white; position: sticky; top: 0; border-bottom: 1px solid var(--border); padding: .5rem .75rem; display: flex; gap: .75rem; align-items: center; }
     #fileName { opacity: .7; font-size: .9rem; }
-    button { border: 1px solid var(--border); border-radius: .75rem; padding: .35rem .6rem; background: #fff; cursor: pointer; }
+    button {   background: #3b82f6; color: white; border: none; border-radius: .5rem; padding: .4rem .75rem; cursor: pointer; }
+    button:hover { background: #2563eb; }
     #status { margin-left: auto; font-variant-numeric: tabular-nums; font-size: .9rem; }
     #viewer { height: calc(100vh - 48px); overflow: auto; outline: none; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; white-space: pre-wrap; line-height: 1.5; }
     .line { padding: 0 .5rem; }
-    .line.active { background: var(--active-bg); border-left: 3px solid #f59e0b; }
+    .line.active {   background: var(--active-bg); linear-gradient(90deg, #dbeafe 0%, #f0f9ff 100%); border-left: 4px solid #3b82f6; font-weight: 500; border-left: 3px solid #f59e0b; }
     .line .num { display: inline-block; width: 4ch; opacity: .45; user-select: none; margin-right: .5rem; }
   </style>
 </head>
