@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Paginierter Text</title>
+  <style>
+    #content { white-space: pre-wrap; font-family: monospace; }
+    .nav { margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+  <div class="nav">
+    <button id="prev">Zurück</button>
+    <span id="page"></span>
+    <button id="next">Weiter</button>
+  </div>
+
+  <script>
+    const linesPerPage = 50;
+    let pages = [];
+    let current = 0;
+
+    async function load() {
+      const text = await fetch("ki-thriller-eurollm.md").then(r => r.text());
+      const lines = text.split("\n");
+      for (let i = 0; i < lines.length; i += linesPerPage) {
+        pages.push(lines.slice(i, i + linesPerPage).join("\n"));
+      }
+      render();
+    }
+
+    function render() {
+      document.getElementById("content").textContent = pages[current];
+      document.getElementById("page").textContent = `Seite ${current + 1}/${pages.length}`;
+    }
+
+    document.getElementById("prev").onclick = () => {
+      if (current > 0) { current--; render(); }
+    };
+    document.getElementById("next").onclick = () => {
+      if (current < pages.length - 1) { current++; render(); }
+    };
+
+    load();
+  </script>
+</body>
+</html>
+
